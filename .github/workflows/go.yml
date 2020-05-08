@@ -10,9 +10,12 @@ jobs:
 
   build:
     name: Build
-    runs-on: macos-10.15
-    steps:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, ubuntu-latest]
 
+    steps:
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
       with:
@@ -29,7 +32,7 @@ jobs:
       run: make -j lint
 
     - name: Build
-      run: make -j darwin-xp-{launcher,extension,grpc-extension}
+      run: make
 
     - name: Test
       run: make test
