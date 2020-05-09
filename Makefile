@@ -34,7 +34,7 @@ else
 endif
 
 launcher: .pre-build
-	go run cmd/make/make.go -targets=launcher -linkstamp
+	go run cmd/make/make.go -targets=launcher
 
 table.ext: .pre-build
 	go run cmd/make/make.go -targets=table-extension -linkstamp
